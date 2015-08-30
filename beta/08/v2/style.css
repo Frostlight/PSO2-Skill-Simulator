@@ -1,0 +1,182 @@
+@charset "UTF-8";
+body {
+    font-family:"Trebuchet MS";
+    font-size: 12px;
+    margin: 5px;
+    padding: 0;
+
+    background-color:#BBBBBB;
+}
+
+a:link {
+    color:#197AA4;
+    text-decoration:none;
+}
+
+a:visited {
+    color:#15456B;
+    text-decoration:none;
+}
+
+div.block {
+    width: 100%;
+}
+
+div.content {
+    border: 1px solid #777777;
+    margin: 0px;
+    background-color:#FFFFFF;
+}
+
+div.tab {
+    border: 1px solid #777777;
+    margin: 0px;
+    padding-left: 24px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 2px;
+    display: inline-block;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+    padding: 5px;
+
+    background: url(img/headerbg.png);
+    background-repeat: repeat-x;
+    border-left: 7px solid #0d4064;
+
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFFFFF;
+    padding: 5px;
+
+    background: url(img/headerbg.png);
+    background-repeat: repeat-x;
+    border-left: 5px solid #0d4064;
+
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 12px;
+    color: #000000;
+    padding: 2px;
+    padding-left: 7px;
+
+    background: url(img/headerbg.png);
+    background-repeat: no-repeat;
+    border-bottom: 1px solid #777777;
+    margin-top: 0px;
+    margin-bottom: 2px;
+}
+
+table.maintable {
+    font-family:"Trebuchet MS";
+    font-size: 12px;
+    width: 100%;
+
+    background-color:#BBBBBB;
+}
+
+table.data {
+    border-spacing: 10px;
+    border-collapse: collapse;
+    margin: 5px;
+}
+
+table.data th {
+    font-weight: bold;
+    border-bottom: 2px solid #777777;
+    border-right: 1px solid #777777;
+    padding:2px;
+}
+
+table.data td {
+    border-bottom: 1px solid #777777;
+    border-right: 1px solid #777777;
+    padding:2px;
+}
+
+table.skill {
+    margin: 0;
+    padding: 0 0px;
+    border-collapse: collapse;
+    border: 1px dotted #777777;
+    background-repeat: no-repeat;
+    background-color:#DDDDDD;
+    color: #666666;
+}
+
+table.skill td{
+    font-size:11px;
+    text-align:center;
+}
+
+.tabrow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+}
+.tabrow li {
+    padding-left: 22px;
+    padding-right: 5px;
+    border: 1px solid #777777;
+    border-bottom: 0px;
+    display: inline-block;
+}
+
+.tabrow li.unselected {
+    background: #DDDDDD;
+}
+
+.tabrow li.selected {
+    background: #FFFFFF;
+}
+
+.tabcontent {
+    border: 1px solid #777777;
+    background-color:#FFFFFF;
+
+    margin: 0px;
+}
+
+td.top {
+    vertical-align: top;
+}
+
+select{
+    font-size:11px;
+    font-family:"Trebuchet MS";
+}
+
+input{
+    font-size:11px;
+    font-family:"Trebuchet MS";
+}
+
+textarea{
+    overflow: auto;
+    font-size:12px;
+    font-family:monospace;
+}
+
+ul {
+    margin: 0em 1em 0em 1em;
+    padding: 5px;
+}
+
+li.sidebar {
+    list-style: none;
+    line-height: 150%;
+}

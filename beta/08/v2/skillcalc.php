@@ -1,0 +1,309 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+
+<title>PSO2 Skill Simulator</title>
+
+<script language="JavaScript" src="skilldata.js"></script>
+<script language="JavaScript" src="skilldesc.js"></script>
+<script language="JavaScript" src="classstats.js"></script>
+<script language="JavaScript" src="language.js"></script>
+<script language="JavaScript">
+    var ver = "08";
+</script>
+<link rel=stylesheet href="style.css" type="text/css">
+
+<body>
+
+<div class="desc" id="desc" style="position:absolute; z-index:1;"><span class="desc" id="l_desctitle"></span><table>
+        <tr>
+            <td id="td_desc" style="vertical-align: top;">
+                <span class="desc" id="l_desc" style="font-size:11px;"></span>
+            </td>
+        </tr>
+        <tr>
+            <td id="td_descdetail" style="vertical-align: top;">
+                <span class="descdetail" id="l_descdetail" style="font-size:10px;"></span>
+            </td>
+        </tr>
+    </table></div>
+<div class="bglayer" id="bglayer" style="background-image:url(img/trans.png); position:absolute; top:0px; left:0px; z-index:2;" onclick="javascript:layerOff();"></div>
+<div id="optionlayer" style="position:absolute; top:-100px; left:-200px; z-index:3;">
+    <img src="img/bar/bar1_0.png"><img src="img/bar/bar1_1.png">
+    <img src="img/bar/bar5_0.png"><img src="img/bar/bar5_1.png"><img src="img/bar/bar5_2.png">
+    <img src="img/bar/bar5_3.png"><img src="img/bar/bar5_4.png"><img src="img/bar/bar5_5.png">
+    <img src="img/bar/bar10_0.png"><img src="img/bar/bar10_1.png"><img src="img/bar/bar10_2.png">
+    <img src="img/bar/bar10_3.png"><img src="img/bar/bar10_4.png"><img src="img/bar/bar10_5.png">
+    <img src="img/bar/bar10_6.png"><img src="img/bar/bar10_7.png"><img src="img/bar/bar10_8.png">
+    <img src="img/bar/bar10_9.png"><img src="img/bar/bar10_10.png">
+</div>
+
+<table class="maintable">
+    <tr>
+        <td width="100%">
+            <div class="block">
+                <a href="../../../index.htm">&laquo; Home</a>
+                <br>
+                <div class="content">
+                    <h2>PSO2 Skill Simulator 3.0001.0 BETA v2 - <span style="color:red">DEPRECATED</span></h2>
+                    <table width="100%">
+                        <tr>
+                            <td style="vertical-align: top;">
+                                <div class="content">
+                                    <h3><span class="t_13">Class Information</span></h3>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <table class="data">
+                                                    <tr>
+                                                        <th><span class="t_0">Class</span></th>
+                                                        <th width="20" style="background-image:url('img/maincls.png'); background-repeat: no-repeat; background-position:center;"></th>
+                                                        <th width="20" style="background-image:url('img/subcls.png'); background-repeat: no-repeat; background-position:center;"></th>
+                                                        <th><span class="t_1">Lv</span></th>
+                                                        <th><span class="t_2">CO SP</span></th>
+                                                        <th><span class="t_3">Used SP</span>/<span class="t_4">Total SP</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class0.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(0);"><span class="t_5">Hunter</span></td>
+                                                        <td><input id="ra_class0" type="radio" name="mainclass" value="0" onChange="changeMain(0);" checked></td>
+                                                        <td><input id="ch_class0" type="checkbox" name="subclass" value="0" onChange="changeSub(0);" disabled></td>
+                                                        <td><select id="sl_level0" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp0" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert0">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class2.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(2);"><span class="t_6">Ranger</span></td>
+                                                        <td><input id="ra_class2" type="radio" name="mainclass" value="2" onChange="changeMain(2);"></td>
+                                                        <td><input id="ch_class2" type="checkbox" name="subclass" value="2" onChange="changeSub(2);"></td>
+                                                        <td><select id="sl_level2" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp2" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert2">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class4.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(4);"><span class="t_7">Force</span></td>
+                                                        <td><input id="ra_class4" type="radio" name="mainclass" value="4" onChange="changeMain(4);"></td>
+                                                        <td><input id="ch_class4" type="checkbox" name="subclass" value="4" onChange="changeSub(4);"></td>
+                                                        <td><select id="sl_level4" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp4" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert4">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class6.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(6);"><span class="t_11">Braver</span></td>
+                                                        <td><input id="ra_class6" type="radio" name="mainclass" value="6" onChange="changeMain(6);"></td>
+                                                        <td><input id="ch_class6" type="checkbox" name="subclass" value="6" onChange="changeSub(6);"></td>
+                                                        <td><select id="sl_level6" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp6" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert6">Pika Pika</span></td>
+                                                    </tr>
+                                                </table>
+                                            </td><td>
+                                                <table class="data">
+                                                    <tr>
+                                                        <th><span class="t_0">Class</span></th>
+                                                        <th width="20" style="background-image:url('img/maincls.png'); background-repeat: no-repeat; background-position:center;"></th>
+                                                        <th width="20" style="background-image:url('img/subcls.png'); background-repeat: no-repeat; background-position:center;"></th>
+                                                        <th><span class="t_1">Lv</span></th>
+                                                        <th><span class="t_2">CO SP</span></th>
+                                                        <th><span class="t_3">Used SP</span>/<span class="t_4">Total SP</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class1.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(1);"><span class="t_8">Fighter</span></td>
+                                                        <td><input id="ra_class1" type="radio" name="mainclass" value="1" onChange="changeMain(1);" ></td>
+                                                        <td><input id="ch_class1" type="checkbox" name="subclass" value="1" onChange="changeSub(1);"></td>
+                                                        <td><select id="sl_level1" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp1" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert1">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class3.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(3);"><span class="t_9">Gunner</span></td>
+                                                        <td><input id="ra_class3" type="radio" name="mainclass" value="3" onChange="changeMain(3);" ></td>
+                                                        <td><input id="ch_class3" type="checkbox" name="subclass" value="3" onChange="changeSub(3);"></td>
+                                                        <td><select id="sl_level3" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp3" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert3">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class5.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(5);"><span class="t_10">Techer</span></td>
+                                                        <td><input id="ra_class5" type="radio" name="mainclass" value="5" onChange="changeMain(5);"></td>
+                                                        <td><input id="ch_class5" type="checkbox" name="subclass" value="5" onChange="changeSub(5);"></td>
+                                                        <td><select id="sl_level5" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp5" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert5">Pika Pika</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="background-image:url('img/class7.png'); background-repeat: no-repeat; padding-left: 18px; background-position:left center;" onclick="tab(7);"><span class="t_12">Bouncer</span></td>
+                                                        <td><input id="ra_class7" type="radio" name="mainclass" value="7" onChange="changeMain(7);"></td>
+                                                        <td><input id="ch_class7" type="checkbox" name="subclass" value="7" onChange="changeSub(7);"></td>
+                                                        <td><select id="sl_level7" onChange="calcSP()"></select></td>
+                                                        <td><select id="sl_bonussp7" onChange="calcSP()"></select></td>
+                                                        <td><span id="l_spalert7">Pika Pika</span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                            <td style="vertical-align: top;" rowspan="2">
+                                <div class="content">
+                                    <h3><span class="t_14">Options</span></h3>
+                                    <table style="width:95%"><tr><td>&nbsp;</td>
+                                            <td><span class="t_38">Language (Game Version)</span><br>
+                                                &nbsp;┣<input id="ra_lang0" name="lang" type="radio" value="1" onChange="changeLang(0)" checked> <span class="t_39">EN (jPSO2)</span><br>
+                                                &nbsp;┣<input id="ra_lang1" name="lang" type="radio" value="0" onChange="changeLang(1)"> <span class="t_40">JP (jPSO2)</span><br>
+                                                &nbsp;┣<input id="ra_lang2" name="lang" type="radio" value="2" onChange="" disabled> <span class="t_41">EN (iPSO2)</span><br>
+                                                &nbsp;┗<input id="ra_lang3" name="lang" type="radio" value="3" onChange="" disabled> <span class="t_42">EN (seaPSO2)</span><br>
+                                                <br>
+                                                <input type="checkbox" id="ch_desc" checked> <span class="t_45">Show Descriptions</span><br>
+                                                &nbsp;┗<input type="checkbox" id="ch_detail" disabled> <span class="t_46">Level Details</span><br>
+                                                <br>
+                                                <span class="t_48">Share</span>: <a href="javascript: showCodeURL();" title="Convert to URL"><span class="t_49">URL</span></a> | <a href="javascript: showCodeText();" title="Convert to text"><span class="t_50">Text</span></a><br>
+                                                <br>
+                                                <span class="t_66">Name</span>: <input type="text" name="tx_slot" id="tx_slot" maxlength=25 value=""><br>
+                                                <span class="t_60">Slot</span> <select id="sl_save">
+                                                <option value="save1">1: Empty</option>
+                                                <option value="save2">2: Empty</option>
+                                                <option value="save3">3: Empty</option>
+                                                <option value="save4">4: Empty</option>
+                                                <option value="save5">5: Empty</option>
+                                                <option value="save6">6: Empty</option>
+                                                <option value="save7">7: Empty</option>
+                                                <option value="save8">8: Empty</option>
+                                                <option value="save9">9: Empty</option>
+                                                <option value="save10">10: Empty</option>
+                                                <option value="save11">11: Empty</option>
+                                                <option value="save12">12: Empty</option>
+                                                <option value="save13">13: Empty</option>
+                                                <option value="save14">14: Empty</option>
+                                                <option value="save15">15: Empty</option>
+                                                <option value="save16">16: Empty</option>
+                                                <option value="save17">17: Empty</option>
+                                                <option value="save18">18: Empty</option>
+                                                <option value="save19">19: Empty</option>
+                                                <option value="save20">20: Empty</option>
+                                                </select><br>
+                                                <input id="b_save" type="button" value="Save" onClick="saveCookie()"> <input id="b_load" type="button" value="Load" onClick="loadCookie()">
+
+
+                                            </td></tr></table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="content">
+                                    <h3><span class="t_15">Parameter Information</span></h3>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <table class="data">
+                                                    <tr>
+                                                        <th colspan="9"><span class="t_17">Base Parameter</span> (<span class="t_29">Race</span>: <select id="sl_race" onChange="changeRace()">
+                                                    <option id="o_race0" value="0">&#9794; Human</option>
+                                                    <option id="o_race1" value="1">&#9792; Human</option>
+                                                    <option id="o_race2" value="2">&#9794; Newman</option>
+                                                    <option id="o_race3" value="3">&#9792; Newman</option>
+                                                    <option id="o_race4" value="4">&#9794; CAST</option>
+                                                    <option id="o_race5" value="5">&#9792; CAST</option>
+                                                    <option id="o_race6" value="6">&#9794; Dewman</option>
+                                                    <option id="o_race7" value="7">&#9792; Dewman</option>
+                                                </select>)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="t_20">HP</span></th>
+                                                        <th><span class="t_21">PP</span></th>
+                                                        <th><span class="t_22">S-ATK</span></th>
+                                                        <th><span class="t_23">R-ATK</span></th>
+                                                        <th><span class="t_24">T-ATK</span></th>
+                                                        <th><span class="t_28">APT</span></th>
+                                                        <th><span class="t_25">S-DEF</span></th>
+                                                        <th><span class="t_26">R-DEF</span></th>
+                                                        <th><span class="t_27">T-DEF</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span id="l_hp">N/A</span></td>
+                                                        <td><span id="l_pp">N/A</span></td>
+                                                        <td><span id="l_satk">N/A</span></td>
+                                                        <td><span id="l_ratk">N/A</span></td>
+                                                        <td><span id="l_tatk">N/A</span></td>
+                                                        <td><span id="l_abl">N/A</span></td>
+                                                        <td><span id="l_sdef">N/A</span></td>
+                                                        <td><span id="l_rdef">N/A</span></td>
+                                                        <td><span id="l_tdef">N/A</span></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td>
+                                                <table class="data">
+                                                    <tr>
+                                                        <th colspan="7"><span class="t_18">Mag Support Level</span> <span id="l_magalert">(0/150)</span> (<input type="checkbox" id="ch_mag" onChange="changeMag()" checked> <span class="t_19">Include</span>)</th>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><span class="t_22">S-ATK</span></th>
+                                                        <th><span class="t_23">R-ATK</span></th>
+                                                        <th><span class="t_24">T-ATK</span></th>
+                                                        <th><span class="t_28">APT</span></th>
+                                                        <th><span class="t_25">S-DEF</span></th>
+                                                        <th><span class="t_26">R-DEF</span></th>
+                                                        <th><span class="t_27">T-DEF</span></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><select id="sl_mag0" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag1" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag2" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag3" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag4" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag5" onChange="changeMag()"></select></td>
+                                                        <td><select id="sl_mag6" onChange="changeMag()"></select></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div class="content">
+                                    <h3><span class="t_16">Skill Tree</span></h3>
+                                    <table>
+                                        <tr>
+                                            <td>&nbsp;</td><td>
+                                                <ul class="tabrow">
+                                                    <li id="tab0" class="selected" onclick="tab(0);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class0.png'); display: inline-block"></div><span class="t_5">Hunter</span></li>
+                                                    <li id="tab1" class="unselected" onclick="tab(1);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class1.png'); display: inline-block"></div><span class="t_8">Fighter</span></li>
+                                                    <li id="tab2" class="unselected" onclick="tab(2);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class2.png'); display: inline-block"></div><span class="t_6">Ranger</span></li>
+                                                    <li id="tab3" class="unselected" onclick="tab(3);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class3.png'); display: inline-block"></div><span class="t_9">Gunner</span></li>
+                                                    <li id="tab4" class="unselected" onclick="tab(4);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class4.png'); display: inline-block"></div><span class="t_7">Force</span></li>
+                                                    <li id="tab5" class="unselected" onclick="tab(5);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class5.png'); display: inline-block"></div><span class="t_10">Techer</span></li>
+                                                    <li id="tab6" class="unselected" onclick="tab(6);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class6.png'); display: inline-block"></div><span class="t_11">Braver</span></li>
+                                                    <li id="tab7" class="unselected" onclick="tab(7);"><div style="position:relative; width:16px; height:16px; top:2px; left:-2px; background-image:url('img/class7.png'); display: inline-block"></div><span class="t_12">Bouncer</span></li>
+                                                </ul>
+                                                <div class="tabcontent" id="skilltree" style="width:1017px; height:785px; background-repeat: no-repeat;" onmousewheel="return false;"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div class="content">
+                    <table><tr><td>&nbsp;</td><td>
+                                <a href="../../../../../pso2.jp/index.htm">PHANTASY STAR ONLINE 2</a> © <a href="../../../../../sega.jp/index.htm">SEGA</a>. All rights reserved.<br>
+                                Coded by RyuHiroshi (Gardios).
+                            </td></tr>
+                    </table>
+                </div>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<script language="JavaScript" src="skillcalc.js"></script>
+</body>
+</html>
